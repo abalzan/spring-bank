@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -22,18 +23,21 @@ public class RegisterUserController {
     private final CommandGateway commandGateway;
 
     @PostMapping
-    public ResponseEntity<RegisterUserResponseDto> registerUser(@RequestBody RegisterUserCommand command) {
-        command.setId(UUID.randomUUID().toString());
+    public ResponseEntity<RegisterUserResponseDto> registerUser(@Valid @RequestBody RegisterUserCommand command) {
+        final String id = UUID.randomUUID().toString();
+        command.setId(id);
 
         try {
             //using sendAndWait, it will only respond when the command handler has complete the work
-            commandGateway.sendAndWait(command);
-            //using send it will immediately assume that the request was successful
+//            commandGateway.sendAndWait(command);
 
-            return new ResponseEntity<>(new RegisterUserResponseDto("User successfully registered"), HttpStatus.CREATED);
+            //using send it will immediately assume that the request was successful
+            commandGateway.send(command);
+
+            return new ResponseEntity<>(new RegisterUserResponseDto(id, "User successfully registered"), HttpStatus.CREATED);
         } catch (Exception e) {
-            String safeErrorMessage = String.format("Error while processing register user request id - %s", command.getId());
-            return new ResponseEntity<>(new RegisterUserResponseDto(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
+            String safeErrorMessage = String.format("Error while processing register user request id - %s", id);
+            return new ResponseEntity<>(new RegisterUserResponseDto(id, safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
 
