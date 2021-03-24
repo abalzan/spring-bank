@@ -1,9 +1,11 @@
 package com.andrei.springbank.user.cmd.api.commands;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
+@AllArgsConstructor
 public class RemoveUserCommand {
 
     //Identifier used by axon to know  which instance of an aggregate type should handle the command message

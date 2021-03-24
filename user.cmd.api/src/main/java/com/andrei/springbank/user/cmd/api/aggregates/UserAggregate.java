@@ -73,7 +73,7 @@ public class UserAggregate {
     @CommandHandler
     public void handle(RemoveUserCommand command) {
         final UserRemovedEvent event = new UserRemovedEvent();
-        event.setId(event.getId());
+        event.setId(command.getId());
 
         //Will store the event on the event store and publish it on the event bus
         AggregateLifecycle.apply(event);
