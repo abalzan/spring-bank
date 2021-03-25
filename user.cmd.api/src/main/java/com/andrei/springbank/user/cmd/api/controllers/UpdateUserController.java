@@ -1,8 +1,7 @@
 package com.andrei.springbank.user.cmd.api.controllers;
 
 import com.andrei.springbank.user.cmd.api.commands.UpdateUserCommand;
-import com.andrei.springbank.user.cmd.api.dtos.BaseResponse;
-import com.andrei.springbank.user.cmd.api.dtos.UpdateUserResponseDto;
+import com.andrei.springbank.user.core.dtos.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.HttpStatus;

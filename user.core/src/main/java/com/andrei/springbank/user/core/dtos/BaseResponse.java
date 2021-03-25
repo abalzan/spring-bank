@@ -1,4 +1,4 @@
-package com.andrei.springbank.user.cmd.api.dtos;
+package com.andrei.springbank.user.core.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

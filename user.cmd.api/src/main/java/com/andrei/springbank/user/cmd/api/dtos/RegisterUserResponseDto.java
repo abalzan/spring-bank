@@ -1,5 +1,7 @@
 package com.andrei.springbank.user.cmd.api.dtos;
 
+import com.andrei.springbank.user.core.dtos.BaseResponse;
+
 public class RegisterUserResponseDto extends BaseResponse {
     private String id;
 

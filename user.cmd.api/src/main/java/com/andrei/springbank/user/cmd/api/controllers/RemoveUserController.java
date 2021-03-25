@@ -1,15 +1,12 @@
 package com.andrei.springbank.user.cmd.api.controllers;
 
 import com.andrei.springbank.user.cmd.api.commands.RemoveUserCommand;
-import com.andrei.springbank.user.cmd.api.commands.UpdateUserCommand;
-import com.andrei.springbank.user.cmd.api.dtos.BaseResponse;
+import com.andrei.springbank.user.core.dtos.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/removeUser")
