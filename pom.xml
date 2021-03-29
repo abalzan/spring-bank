@@ -15,5 +15,8 @@
         <module>user.query.api</module>
         <module>user.oauth2</module>
         <module>api-gateway</module>
+        <module>bankacc_cmd_api</module>
+        <module>bankacc_core</module>
+        <module>bankacc_query_api</module>
     </modules>
 </project>
