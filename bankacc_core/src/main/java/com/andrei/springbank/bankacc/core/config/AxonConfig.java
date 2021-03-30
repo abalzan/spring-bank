@@ -1,4 +1,4 @@
-package com.andrei.springbank.bankacc.config;
+package com.andrei.springbank.bankacc.core.config;
 
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoClient;

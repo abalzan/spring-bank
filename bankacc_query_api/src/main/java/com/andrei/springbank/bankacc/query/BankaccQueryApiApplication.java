@@ -1,9 +1,9 @@
-package com.andrei.springbank.bankacc;
+package com.andrei.springbank.bankacc.query;
 
-import com.andrei.springbank.bankacc.config.AxonConfig;
+import com.andrei.springbank.bankacc.core.config.AxonConfig;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -12,11 +12,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@EntityScan(basePackages = "com.andrei.springbank.bankacc.core.model")
 @Import(AxonConfig.class)
-public class BankaccCmdApiApplication {
+public class BankaccQueryApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BankaccCmdApiApplication.class, args);
+		SpringApplication.run(BankaccQueryApiApplication.class, args);
 	}
 
 }
