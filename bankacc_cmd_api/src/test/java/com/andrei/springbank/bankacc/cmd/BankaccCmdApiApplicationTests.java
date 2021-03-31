@@ -1,4 +1,4 @@
-package com.andrei.springbank.bankacc.query;
+package com.andrei.springbank.bankacc.cmd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
