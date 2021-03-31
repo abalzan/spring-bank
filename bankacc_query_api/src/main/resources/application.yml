@@ -7,7 +7,7 @@ spring:
       port: 27017
       database: bank
   jpa:
-    database-platform: or.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
       ddl-auto: update

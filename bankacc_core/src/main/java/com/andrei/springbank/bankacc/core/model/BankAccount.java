@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Setter
@@ -16,12 +17,14 @@ import java.util.Date;
 public class BankAccount {
 
     @Id
-    private Long id;
+    private String id;
 
     private String accountHolderId;
 
     private Date createDate;
 
     private AccountType accountType;
+
+    private BigDecimal balance;
 
 }
