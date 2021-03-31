@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 
 @Data
@@ -15,5 +16,6 @@ public class WithdrawFundsCommand {
     @TargetAggregateIdentifier
     private String id;
 
+    @Min(value = 1, message = "amount must be at least 1")
     public BigDecimal amount;
 }
