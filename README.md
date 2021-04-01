@@ -43,7 +43,12 @@ first time you ran the application make use to uncomment the //@Component from t
 this will allow you to have at least one user to start and play with. 
 If it fails for any reason try to comment the @PreAuthorize("hasAuthority('WRITE_PRIVILEGE')") from RegisterUserController
 
-This is the flow of the application
-![img.png](img.png)
+This is the flow of the user microservices
+![user-microservice.png](user-microservice.png)
+
+This is the flow of the bank account microservices
+![bank-account-microservice.png](bank-account-microservice.png)
+
+
 
 
