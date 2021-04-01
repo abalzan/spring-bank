@@ -44,7 +44,7 @@ public class AccountQueryHandlerImpl implements AccountQueryHandler {
             new AccountLookupResponse("No Bank account found");
         }
 
-        return new AccountLookupResponse("Successfully returned " + bankAccountList.size() + " Bank accounts " + bankAccountList);
+        return new AccountLookupResponse("Successfully returned " + bankAccountList.size() + " Bank accounts ", bankAccountList);
     }
 
     @QueryHandler
@@ -56,7 +56,7 @@ public class AccountQueryHandlerImpl implements AccountQueryHandler {
 
         return  bankAccountList.isEmpty()
                 ? new AccountLookupResponse("No Bank account found")
-                : new AccountLookupResponse("Successfully returned " + bankAccountList.size() + " Bank account(s) " + bankAccountList);
+                : new AccountLookupResponse("Successfully returned " + bankAccountList.size() + " Bank account(s) ", bankAccountList);
 
     }
 }
