@@ -1,0 +1,908 @@
+{
+	"info": {
+		"_postman_id": "611429fa-4181-496d-8c49-7e0fd3c19bf0",
+		"name": "CQRS-SpringBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RegisterUserCommand",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3NjAxNjYsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiTG1TcXJsMm9pbHlRYWtXMzh4N2MwUHUzODE4IiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.OpyH2CZ42RolWW2OXhhdZvuP9Zvrb_fgVAyS4YVFA1U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\": {\n\t\t\"firstname\": \"James\",\n\t\t\"lastname\": \"doe\",\n\t\t\"emailAddress\": \"james@springbank.com\",\n\t\t\"account\": {\n\t\t\t\"username\": \"james\",\n\t\t\t\"password\": \"passw01\",\n\t\t\t\"roles\": [\n\t\t\t\t\"WRITE_PRIVILEGE\"\n\t\t\t]\n\t\t}\n\t\t\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/registerUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"registerUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUserCommandGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3NjkxMzcsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiQkdmUUY3QUNia05WVFBCWDFMZzZuU1BHVWZNIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.1GZoyLI45ukqIa9YqEx68OJWUy6iySGIi1D0LJGPckE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\": {\n\t\t\"firstname\": \"Andrei\",\n\t\t\"lastname\": \"doe\",\n\t\t\"emailAddress\": \"andrei@springbank.com\",\n\t\t\"account\": {\n\t\t\t\"username\": \"andrei\",\n\t\t\t\"password\": \"passw01\",\n\t\t\t\"roles\": [\n\t\t\t\t\"WRITE_PRIVILEGE\"\n\t\t\t]\n\t\t}\n\t\t\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2000/api/v1/registerUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"registerUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update UserCommand",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3NjAxNjYsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiTG1TcXJsMm9pbHlRYWtXMzh4N2MwUHUzODE4IiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.OpyH2CZ42RolWW2OXhhdZvuP9Zvrb_fgVAyS4YVFA1U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\": {\n\t\t\"firstname\": \"Andrei\",\n\t\t\"lastname\": \"doe\",\n\t\t\"emailAddress\": \"andrei@springbank.com\",\n\t\t\"account\": {\n\t\t\t\"username\": \"andrei\",\n\t\t\t\"password\": \"passw01\",\n\t\t\t\"roles\": [\n\t\t\t\t\"WRITE_PRIVILEGE\",\n\t\t\t\t\"READ_PRIVILEGE\"\n\t\t\t]\n\t\t}\n\t\t\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/updateUser/ec843b6a-f9ff-4617-b685-38b575f930bf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"updateUser",
+						"ec843b6a-f9ff-4617-b685-38b575f930bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update UserCommandGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3NjkxMzcsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiQkdmUUY3QUNia05WVFBCWDFMZzZuU1BHVWZNIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.1GZoyLI45ukqIa9YqEx68OJWUy6iySGIi1D0LJGPckE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\": {\n\t\t\"firstname\": \"Andrei\",\n\t\t\"lastname\": \"doe\",\n\t\t\"emailAddress\": \"andrei@springbank.com\",\n\t\t\"account\": {\n\t\t\t\"username\": \"andrei\",\n\t\t\t\"password\": \"passw01\",\n\t\t\t\"roles\": [\n\t\t\t\t\"WRITE_PRIVILEGE\",\n\t\t\t\t\"READ_PRIVILEGE\"\n\t\t\t]\n\t\t}\n\t\t\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/updateUser/ec843b6a-f9ff-4617-b685-38b575f930bf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"updateUser",
+						"ec843b6a-f9ff-4617-b685-38b575f930bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUserCommand",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3NjA2MzcsInVzZXJfbmFtZSI6ImphbmVkIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiXSwianRpIjoiOFNUaUZfcnl2Q1VGR2lTMXRUdGxUOXZremVnIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.rgXu4l6ebDm0rNeSlrWeWiph8PY82FVvsqJbDvjH17Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/removeUser/8d610ba9-cb42-4d44-9230-0e69a50762f8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"removeUser",
+						"8d610ba9-cb42-4d44-9230-0e69a50762f8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUserCommandGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3NjkxMzcsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiQkdmUUY3QUNia05WVFBCWDFMZzZuU1BHVWZNIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.1GZoyLI45ukqIa9YqEx68OJWUy6iySGIi1D0LJGPckE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/removeUser/ec843b6a-f9ff-4617-b685-38b575f930bf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"removeUser",
+						"ec843b6a-f9ff-4617-b685-38b575f930bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsersQuery",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyMDI3NzQsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiclFvUEJvbmtvcGJhZmQyT2pJVFp4a2NoRjU4IiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.-gH2gmOveWZXpX6IhR5U1FI44CUb-OV_1n22vQq3UGw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1/userLookup/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserByIdQuery",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3NjA2MzcsInVzZXJfbmFtZSI6ImphbmVkIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiXSwianRpIjoiOFNUaUZfcnl2Q1VGR2lTMXRUdGxUOXZremVnIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.rgXu4l6ebDm0rNeSlrWeWiph8PY82FVvsqJbDvjH17Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1/userLookup/byid/8057c27f-33d5-4bd8-acb9-921d537599fe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						"byid",
+						"8057c27f-33d5-4bd8-acb9-921d537599fe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByFilter(springbank)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3Njg5MTEsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoicVdUV0ptVG1tR0tsZ0VsTWYzaV9iUjNqVUtvIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Jt88iXIXHBBZ5p9IwkPjb_wtuxpj9aI5uKdzkNUabA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1/userLookup/byfilter/springbank.",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						"byfilter",
+						"springbank."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByFilter(john)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/v1/userLookup/byfilter/john",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						"byfilter",
+						"john"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generate Oauth Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic c3ByaW5nYmFua0NsaWVudDpzcHJpbmdiYW5rU2VjcmV0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "johnd",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "passw01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8084/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsersQueryGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3Njg5MTEsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoicVdUV0ptVG1tR0tsZ0VsTWYzaV9iUjNqVUtvIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Jt88iXIXHBBZ5p9IwkPjb_wtuxpj9aI5uKdzkNUabA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/userLookup/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserByIdQueryGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3Njg5MTEsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoicVdUV0ptVG1tR0tsZ0VsTWYzaV9iUjNqVUtvIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Jt88iXIXHBBZ5p9IwkPjb_wtuxpj9aI5uKdzkNUabA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/userLookup/byid/8057c27f-33d5-4bd8-acb9-921d537599fe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						"byid",
+						"8057c27f-33d5-4bd8-acb9-921d537599fe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByFilter(john)Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3Njg5MTEsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoicVdUV0ptVG1tR0tsZ0VsTWYzaV9iUjNqVUtvIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Jt88iXIXHBBZ5p9IwkPjb_wtuxpj9aI5uKdzkNUabA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/userLookup/byfilter/john",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						"byfilter",
+						"john"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByFilter(springbank)Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTY3Njg5MTEsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoicVdUV0ptVG1tR0tsZ0VsTWYzaV9iUjNqVUtvIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Jt88iXIXHBBZ5p9IwkPjb_wtuxpj9aI5uKdzkNUabA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/userLookup/byfilter/springbank.",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"userLookup",
+						"byfilter",
+						"springbank."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OpenBankAccountGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyMDI3NzQsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiclFvUEJvbmtvcGJhZmQyT2pJVFp4a2NoRjU4IiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.-gH2gmOveWZXpX6IhR5U1FI44CUb-OV_1n22vQq3UGw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"accountHolderId\": \"8057c27f-33d5-4bd8-acb9-921d537599fe\",\n\t\"accountType\": \"CURRENT\",\n\t\"openingBalance\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2000/api/v1/openBankAccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"openBankAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "depositFundsToBankAccountGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyMDU5MjEsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoicjJyZGFMMzhqYkFWRHBhM3hWd09BV1haRVl3IiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.OeZRZ0g0tTKE6O1RoHt__iCohY_PHtMpERJaQ_h2w5o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"amount\": 50.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2000/api/v1/depositFunds/f8a7748d-d1b7-4719-8039-26865f6d580f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"depositFunds",
+						"f8a7748d-d1b7-4719-8039-26865f6d580f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "withdrawFundsFromBankAccountGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyMDg2MDIsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiQThUa1JRZTdDUF9vQnVqTDQ0UHZxY1ZFUVVFIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Bx3c-IaJ1jGlndqEvUUbFZ2gz3umcXQIZC0pxFzXsoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"amount\": 90.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2000/api/v1/withdrawFunds/f8a7748d-d1b7-4719-8039-26865f6d580f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"withdrawFunds",
+						"f8a7748d-d1b7-4719-8039-26865f6d580f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteBankAccountGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyNzQzMzYsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiaW43NFhUVTlXSjB1MC1nbGxZTVFJZGpQQVF3IiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.H8h93Ge19D3tEHSY5B5RYnonSjgfvrkNpqTjrsQuqYI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/closeBankAccount/f8a7748d-d1b7-4719-8039-26865f6d580f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"closeBankAccount",
+						"f8a7748d-d1b7-4719-8039-26865f6d580f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllBankAccountsGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyODgyMTgsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiaE1QQ09HR2ZEMGxqSjJtMkcwaWJwbE83MTBJIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Myt4Y6CcJ69tbElk7p1bVd91RPU9LLpBNPabWd81OlM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/bankAccountLookup/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBankAccountByIdGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyODgyMTgsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiaE1QQ09HR2ZEMGxqSjJtMkcwaWJwbE83MTBJIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Myt4Y6CcJ69tbElk7p1bVd91RPU9LLpBNPabWd81OlM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/bankAccountLookup/byId/31509751-a72c-49aa-b207-c7563dcc3aa4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"byId",
+						"31509751-a72c-49aa-b207-c7563dcc3aa4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBankAccountByHolderIdGateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyODgyMTgsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiaE1QQ09HR2ZEMGxqSjJtMkcwaWJwbE83MTBJIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Myt4Y6CcJ69tbElk7p1bVd91RPU9LLpBNPabWd81OlM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/bankAccountLookup/byHolderId/3cbd7305-3276-4dd5-a786-6940e3e21b25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"byHolderId",
+						"3cbd7305-3276-4dd5-a786-6940e3e21b25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBankAccountWithBalanceBiggerthan200Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyODgyMTgsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiaE1QQ09HR2ZEMGxqSjJtMkcwaWJwbE83MTBJIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Myt4Y6CcJ69tbElk7p1bVd91RPU9LLpBNPabWd81OlM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/bankAccountLookup/withBalance/GREATER_THAN/200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"withBalance",
+						"GREATER_THAN",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBankAccountWithBalanceSmallerthan200Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTcyODgyMTgsInVzZXJfbmFtZSI6ImpvaG5kIiwiYXV0aG9yaXRpZXMiOlsiUkVBRF9QUklWSUxFR0UiLCJXUklURV9QUklWSUxFR0UiXSwianRpIjoiaE1QQ09HR2ZEMGxqSjJtMkcwaWJwbE83MTBJIiwiY2xpZW50X2lkIjoic3ByaW5nYmFua0NsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Myt4Y6CcJ69tbElk7p1bVd91RPU9LLpBNPabWd81OlM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2000/api/v1/bankAccountLookup/withBalance/LESS_THAN/200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"withBalance",
+						"LESS_THAN",
+						"200"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
