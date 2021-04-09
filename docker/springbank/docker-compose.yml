@@ -1,7 +1,45 @@
 version: '3.7'
 
 services:
+  mysql-container:
+    container_name: mysql-container
+    image: mysql:8
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: springbankNet
+      MYSQL_DATABASE: bank
+      MYSQL_USER: bank
+      MYSQL_PASSWORD: springbankNet
+
+  axon-server:
+    container_name: axon-server
+    image: axoniq/axonserver:latest
+    restart: always
+    ports:
+      - 8024:8024
+      - 8124:8124
+
+  mongo-container:
+    container_name: mongo-container
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+
+  oauth2-service:
+    build: ../.././user.oauth2
+    container_name: oauth2-service
+    image: oauth2-service:latest
+    restart: always
+    ports:
+      - 8084:8084
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+
   user-cmd-api:
+    build: ../.././user.cmd.api
     container_name: user-cmd-api
     image: user-cmd-api:latest
     restart: always
@@ -11,6 +49,7 @@ services:
       - "SPRING_PROFILES_ACTIVE=docker"
 
   user-query-api:
+    build: ../.././user.query.api
     container_name: user-query-api
     image: user-query-api:latest
     restart: always
@@ -20,6 +59,7 @@ services:
       - "SPRING_PROFILES_ACTIVE=docker"
 
   bankacc-cmd-api:
+    build: ../.././bankacc_cmd_api
     container_name: bankacc-cmd-api
     image: bankacc-cmd-api:latest
     restart: always
@@ -29,6 +69,7 @@ services:
       - "SPRING_PROFILES_ACTIVE=docker"
 
   bankacc-query-api:
+    build: ../.././bankacc_query_api
     container_name: bankacc-query-api
     image: bankacc-query-api:latest
     restart: always
@@ -38,6 +79,7 @@ services:
       - "SPRING_PROFILES_ACTIVE=docker"
 
   api-gateway:
+    build: ../.././api-gateway
     container_name: api-gateway
     image: api-gateway:latest
     restart: always

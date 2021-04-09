@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.UUID;
 
 @RequiredArgsConstructor
-//@Component
+@Component
 public class Bootstrap implements CommandLineRunner {
 
     private final CommandGateway commandGateway;
@@ -24,6 +24,7 @@ public class Bootstrap implements CommandLineRunner {
         final String id = UUID.randomUUID().toString();
 
         final RegisterUserCommand userCommand = RegisterUserCommand.builder()
+                .id(id)
                 .user(User.builder()
                         .id(id)
                         .firstname("john")
